@@ -24,9 +24,13 @@ public class CategoryController {
     public CategoryDto.Response getTestResult(
             @RequestParam(name = "result") String testResult) {
         // 테스트 결과 도출
+        log.info(testResult);
         Long categoryId = testResultUtil.getCategoryIdByTestResult(testResult);
+        log.info(categoryId.toString());
         Category category = categoryService.getCategoryByCategoryId(categoryId);
+        log.info(category.toString());
         Category fitCategory = categoryService.getCategoryByCategoryId(category.getFitCategoryId());
+        log.info(fitCategory.toString());
 
         return new CategoryDto.Response(
                 new CategoryDto.Data(
